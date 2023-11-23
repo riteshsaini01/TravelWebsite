@@ -1,4 +1,4 @@
-import "./App.css";
+import "./App.scss";
 import Navbar from "./Components/Navbar/Navbar";
 import Home from "./Components/Home/Home"
 import Destinations from "./Components/Destinations/Destination"
@@ -15,10 +15,10 @@ function App() {
 
   return (
    <div>
-    <Navbar/>
-    {/*<Home/>
-    <Middle/>
-    <Destinations/>
+  <Navbar/>
+  <Home/>
+  <Middle/>
+    {/* <Destinations/>
     <Portfolio/>
     <Reviews/>
     <Questions/>
