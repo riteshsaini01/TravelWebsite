@@ -72,3 +72,48 @@
         display: none;
     }
 }
+
+//Media queries
+@media screen and (min-width: 480px){
+    .Home{
+         .sectionText{
+            padding: 0 2rem;
+            justify-content: center;
+            text-align: center;
+            width: 100%;
+
+           h1{
+            font-size: var(--biggestFontSize);
+            font-weight: 900;
+           }
+
+           p{
+            padding: 1rem 0;
+            font-size: var(--h2FontSize);
+            max-width: 70%;
+            margin: auto;
+           }
+           .btn{
+            font-size: var(--h3FontSize);
+            margin: auto;
+            color: white;
+           }
+         }
+    }
+    
+}
+@media screen and (min-width: 769px)
+{
+    Home{
+        .sectionText{
+            width: 100%;
+
+            h1{
+                font-size: 4rem;
+                font-weight: 900;
+                max-width: 70%;
+                margin: auto;
+            }
+        }
+    }
+}

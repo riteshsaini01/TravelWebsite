@@ -7,7 +7,7 @@ import Middle from "./Components/Middle/Middle"
 import Portfolio from "./Components/Portfolio/Portfolio"
 import Questions from "./Components/Questions/Questions"
 import Reviews from "./Components/Reviews/Reviews"
-import Subscribe from "./Components/Reviews/Reviews"
+import Subscribe from "./Components/Subscribe/Subscribe"
 
 
 function App() {
@@ -20,10 +20,10 @@ function App() {
   <Middle/>
   <Destinations/>
   <Portfolio/>
-    {/*<Reviews/>
-    <Questions/>
-    <Subscribe/>
-  <Footer/>*/}
+  <Reviews/>
+  <Questions/>
+  <Subscribe/>
+  <Footer/>
      </div>
   )
 }
