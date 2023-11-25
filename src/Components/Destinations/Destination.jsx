@@ -74,7 +74,7 @@ const Destination = () => {
   return (
     <div className="destination section container">
       <div className="secContainer">
-        <div className="">
+        <div className="secTitle">
           <span className='redtext'>Explore Now</span>
           <h3>Find Your Dream Destination</h3>
           <p>
