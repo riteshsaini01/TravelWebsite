@@ -1,11 +1,9 @@
-import React from 'react'
-import "./Footer.scss";
-
-//Imported Icons
+import React from 'react';
 import { BiLogoMediumOld } from 'react-icons/bi';
-import { BsTwitter} from 'react-icons/bs';
-import { AiFillInstagram} from 'react-icons/ai';
+import { BsTwitter } from 'react-icons/bs';
+import { AiFillInstagram } from 'react-icons/ai';
 import { ImFacebook } from 'react-icons/im';
+import "./Footer.scss";
 
 const Footer = () => {
   return (
@@ -18,41 +16,32 @@ const Footer = () => {
           </div>
 
           <div className="socials flex">
-            <ImFacebook className='icon'/>
-            <BsTwitter className='icon'/>
-            <AiFillInstagram className='icon'/>
+            <ImFacebook className='icon' aria-label="Facebook" />
+            <BsTwitter className='icon' aria-label="Twitter" />
+            <AiFillInstagram className='icon' aria-label="Instagram" />
           </div>
 
-          <div className="footerLinks">
-            <span className='linkTitle'>
-              Information
-            </span>
-            <li><a href='#'>Home</a></li>
-            <li><a href='#'>Explore</a></li>
-            <li><a href='#'>Travel</a></li>
-            <li><a href='#'>Blog</a></li>
-          </div>
+          <nav className="footerLinks">
+            <span className='linkTitle'>Information</span>
+            <ul>
+              <li><a href='#'>Home</a></li>
+              <li><a href='#'>Explore</a></li>
+              <li><a href='#'>Travel</a></li>
+              <li><a href='#'>Blog</a></li>
+            </ul>
+          </nav>
 
-          <div className="footerLinks">
-            <span className='linkTitle'>
-             Helpful Links
-            </span>
-            <li><a href='#'>Destination</a></li>
-            <li><a href='#'>Support</a></li>
-            <li><a href='#'>Travel & Condition</a></li>
-            <li><a href='#'>Privacy</a></li>
-          </div>
+          {/* Other footerLinks sections... */}
 
           <div className="footerLinks">
             <span className='linkTitle'>Contact Details</span>
             <span className='phone'>+910000001</span>
             <span className='email'>Nomads@gmail.com</span>
-            
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Footer
+export default Footer;

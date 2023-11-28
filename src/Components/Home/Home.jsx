@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import "./Home.scss";
 
 //Imported Assets
@@ -8,10 +8,15 @@ import image2 from '../../Assets/image2.jpg';
 import image3 from '../../Assets/image3.jpg';
 import image4 from '../../Assets/image4.jpg';
 
+import Aos from 'aos'
+import 'aos/dist/aos.css'
+
 //Imported icons
 import {FaArrowRight} from 'react-icons/fa'
 
 const Home = () => {
+
+  useEffect(()=>)
   return (
     <div className='Home'>
    <div className="videoBg">
