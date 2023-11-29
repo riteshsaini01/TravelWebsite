@@ -1,9 +1,15 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import "./Questions.scss";
 import "./Accordion.jsx"
 import Accordion from './Accordion.jsx';
 
+import Aos from 'aos'
+import 'aos/dist/aos.css'
+
 const Questions = () => {
+  useEffect(()=>{
+    Aos.init({duration: 1000})
+  },[]);
   const [active, setActive] = useState(
     "How do I choose the right travel destination for me?"
   );
@@ -52,8 +58,8 @@ const Questions = () => {
 
         <div className="form">
           <div className="secHeading">
-            <h4>Do you have any specific questions?</h4>
-            <p>
+            <h4 data-aos='fade-up'>Do you have any specific questions?</h4>
+            <p data-aos='fade-up'>
               please fill the form below and our 
               dedicated team will get intouch
               with you as soon as possible.
@@ -61,9 +67,9 @@ const Questions = () => {
           </div>
 
           <div className="formContent grid">
-            <input type='emai' placeholder='Enter email address'/>
-            <textarea placeholder='Enter your question here'></textarea>
-            <button className='btn'>Submit Inquiry</button>
+            <input type='emai' placeholder='Enter email address' data-aos='fade-up'/>
+            <textarea placeholder='Enter your question here' data-aos='fade-up'></textarea>
+            <button className='btn' data-aos='fade-up'>Submit Inquiry</button>
           </div>
         </div>
       </div>

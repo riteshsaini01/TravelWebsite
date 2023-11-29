@@ -1,4 +1,6 @@
-import React from 'react';
+import React,{useEffect} from 'react';
+//import { Route, Switch } from 'react-router-dom';
+//import Cards from '../Cards/Card.jsx';
 import "./Destination.scss";
 
 // Importing icons
@@ -16,6 +18,9 @@ import image4 from '../../Assets/image4.jpg'
 import image5 from '../../Assets/image5.jpg'
 import image6 from '../../Assets/image6.jpg'
 import image7 from '../../Assets/image7.jpg'
+
+import Aos from 'aos'
+import 'aos/dist/aos.css'
 
 // Lets create an array that is gonna contain all destinantion data and we loop through
 const destination = [
@@ -71,37 +76,40 @@ const destination = [
 ]
 
 const Destination = () => {
+  useEffect(()=>{
+    Aos.init({duration: 1000})
+  },[]);
   return (
     <div className="destination section container">
       <div className="secContainer">
         <div className="secTitle">
-          <span className='redtext'>Explore Now</span>
-          <h3>Find Your Dream Destination</h3>
-          <p>
+          <span className='redtext' data-aos='fade-up'>Explore Now</span>
+          <h3 data-aos='fade-up'>Find Your Dream Destination</h3>
+          <p data-aos='fade-up'>
             Fill in the fields below to find the best spot for your next tour.
           </p>
         </div>
 
         <div className="searchField grid">
-          <div className="inputField flex">
+          <div className="inputField flex" data-aos='fade-up'>
             <MdLocationPin className='icon'/>
             <input type='text' placeholder='Location'/>
           </div>
           
-          <div className="inputField flex">
+          <div className="inputField flex" data-aos='fade-up'>
             <BsFillCreditCardFill className='icon'/>
             <input type='text' placeholder='Budget'/>
           </div>
          
-          <div className="inputField flex">
+          <div className="inputField flex" data-aos='fade-up'>
             <BsFillCalendarDateFill className='icon'/>  {/* Corrected icon */}
             <input type='text' placeholder='Date'/>
           </div>
 
-          <button className='btn flex'><BiSearchAlt className='icon'/>Search</button>
+          <button className='btn flex' data-aos='fade-up'><BiSearchAlt className='icon'/>Search</button>
         </div>
         <div className="secMenu">
-          <ul className='flex'>
+          <ul className='flex' data-aos='fade-up'>
             <li className='active'>All</li>
             <li>Recommended</li>
             <li>Beach</li>
@@ -114,8 +122,8 @@ const Destination = () => {
         <div className="destinationContainer grid">
           {destination.map(destination => {
             return(
-              <div className="singleDestination" key={destination.id}>
-            <div className="imgDiv">
+              <div className="singleDestination" key={destination.id} data-aos='fade-up'>
+            <div className="imgDiv" data-aos='fade-up'>
               <img src={destination.img} alt='Destination Image'/>
 
               <div className="descInfo flex">
