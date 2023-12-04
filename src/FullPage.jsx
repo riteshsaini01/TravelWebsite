@@ -10,24 +10,22 @@ import Reviews from "./Components/Reviews/Reviews";
 import Subscribe from "./Components/Subscribe/Subscribe";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import DestinationCardDetails from "./Components/Destinations/DestinationCardDetails";
-import FullPage from "./FullPage";
 
-function App() {
+import React from "react";
+
+function FullPage() {
   return (
-    <Router>
-      <div>
-        <Routes>
-          <Route path="/" element={<FullPage />} />
-        </Routes>
-        <Routes>
-          <Route
-            path="/destinations/:id"
-            element={<DestinationCardDetails />}
-          />
-        </Routes>
-      </div>
-    </Router>
+    <div>
+      <Navbar />
+
+      <Home />
+      <Middle />
+      <Destinations />
+      <Portfolio />
+      <Questions />
+      <Footer />
+    </div>
   );
 }
 
-export default App;
+export default FullPage;
