@@ -8,7 +8,7 @@ import { MdLocationPin } from "react-icons/md";
 import { BsFillCreditCardFill } from "react-icons/bs";
 import { BsFillCalendarDateFill } from "react-icons/bs";
 import { BiSearchAlt } from "react-icons/bi";
-import { MdChevronLeft} from "react-icons/md";
+//import { MdChevronLeft} from "react-icons/md";
 //import { MdChevronRight} from "react-icons/md";
 
 // Imported images
@@ -127,13 +127,13 @@ const Destination = () => {
             </ul>
           </div>
 
-         // <MdChevronLeft size={40} />
+         
           <div className="destinationContainer grid">
           
            { destination.map((destination) => {
               return <DestinationCard destination={destination} />;
             })}
-          //  <MdChevronRight size={40} />
+         
            
           </div>
         </div>
