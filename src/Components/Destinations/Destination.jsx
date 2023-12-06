@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 //import { Route, Switch } from 'react-router-dom';
 //import Cards from '../Cards/Card.jsx';
 import "./Destination.scss";
@@ -11,76 +11,47 @@ import { BiSearchAlt } from "react-icons/bi";
 //import { MdChevronLeft} from "react-icons/md";
 //import { MdChevronRight} from "react-icons/md";
 
-// Imported images
-import image1 from "../../Assets/image1.jpg";
-import image2 from "../../Assets/image2.jpg";
-import image3 from "../../Assets/image3.jpg";
-import image4 from "../../Assets/image4.jpg";
-import image5 from "../../Assets/image5.jpg";
-import image6 from "../../Assets/image6.jpg";
-import image7 from "../../Assets/image7.jpg";
-
 import Aos from "aos";
 import "aos/dist/aos.css";
 import DestinationCard from "./DestinationCard";
+import DestinationDB from "./DestinationDB";
 
 // Lets create an array that is gonna contain all destinantion data and we loop through
-const destination = [
-  {
-    id: 1,
-    img: image1,
-    name: "Jaipur",
-    location: "Rajasthan",
-    rating: 4.7,
-  },
-  {
-    id: 2,
-    img: image2,
-    name: "Udaipur",
-    location: "Rajasthan",
-    rating: 4.2,
-  },
-  {
-    id: 3,
-    img: image3,
-    name: "Jaisalmer",
-    location: "Rajasthan",
-    rating: 4.3,
-  },
-  {
-    id: 4,
-    img: image4,
-    name: "Ooty",
-    location: "TamilNadu",
-    rating: 4.8,
-  },
-  {
-    id: 5,
-    img: image5,
-    name: "Manali",
-    location: "Himachal Pradesh",
-    rating: 4.1,
-  },
-  {
-    id: 6,
-    img: image6,
-    name: "Panaji",
-    location: "Goa",
-    rating: 4.5,
-  },
-  {
-    id: 7,
-    img: image7,
-    name: "Bridge",
-    location: "Mumbai",
-    rating: 4.3,
-  },
-];
 
 const Destination = () => {
+  const [inputSearch, setInputSearch] = useState("");
+  const [searchLocation, setSearchLocation] = useState("");
+  const [filteredDestinations, setFilteredDestinations] =
+    useState(DestinationDB);
+
+  function handleSearchClick(e) {
+    e.preventDefault();
+    setSearchLocation(inputSearch);
+    setInputSearch("");
+  }
+
+  function handleInputChange(e) {
+    setInputSearch(e.target.value);
+
+    const newFilteredDestinations = DestinationDB.filter(
+      (dest) =>
+        dest.name.toLowerCase().startsWith(inputSearch) ||
+        dest.location.toLowerCase().startsWith(inputSearch)
+    );
+
+    setFilteredDestinations(newFilteredDestinations);
+  }
+
+  useEffect(() => {
+    if (inputSearch === "") {
+      setFilteredDestinations(DestinationDB);
+    }
+  }, [inputSearch]);
+
   useEffect(() => {
     Aos.init({ duration: 1000 });
   }, []);
+
   return (
     <div id="destination" className="destination section container">
       <div className="destination section container">
@@ -98,43 +69,24 @@ const Destination = () => {
           <div className="searchField grid">
             <div className="inputField flex" data-aos="fade-up">
               <MdLocationPin className="icon" />
-              <input type="text" placeholder="Location" />
-            </div>
-
-            <div className="inputField flex" data-aos="fade-up">
-              <BsFillCreditCardFill className="icon" />
-              <input type="text" placeholder="Budget" />
-            </div>
-
-            <div className="inputField flex" data-aos="fade-up">
-              <BsFillCalendarDateFill className="icon" /> {/* Corrected icon */}
-              <input type="text" placeholder="Date" />
+              <input
+                type="text"
+                placeholder="Location"
+                onChange={handleInputChange}
+                value={inputSearch}
+              />
             </div>
 
             <button className="btn flex" data-aos="fade-up">
-              <BiSearchAlt className="icon" />
+              <BiSearchAlt className="icon" onClick={handleSearchClick} />
               Search
             </button>
           </div>
-          <div className="secMenu">
-            <ul className="flex" data-aos="fade-up">
-              <li className="active">All</li>
-              <li>Recommended</li>
-              <li>Beach</li>
-              <li>Park</li>
-              <li>Nature</li>
-              <li>Mountain</li>
-            </ul>
-          </div>
 
-         
           <div className="destinationContainer grid">
-          
-           { destination.map((destination) => {
+            {filteredDestinations.map((destination) => {
               return <DestinationCard destination={destination} />;
             })}
-         
-           
           </div>
         </div>
       </div>
