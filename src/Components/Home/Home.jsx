@@ -3,10 +3,10 @@ import "./Home.scss";
 
 //Imported Assets
 import Video from "../../Assets/video.mp4";
-import image1 from "../../Assets/image1.jpg";
-import image2 from "../../Assets/image2.jpg";
-import image3 from "../../Assets/image3.jpg";
-import image4 from "../../Assets/image4.jpg";
+import image1 from "../../Assets/Jodhpur.jpg";
+import image2 from "../../Assets/Goa.jpg";
+import image3 from "../../Assets/Jaipur.jpg";
+import image4 from "../../Assets/Mysore.jpg";
 
 import Aos from "aos";
 import "aos/dist/aos.css";
