@@ -23,6 +23,8 @@ function FullPage() {
       <Destinations />
       <Portfolio />
       <Questions />
+      <Reviews />
+      <Subscribe />
       <Footer />
     </div>
   );
