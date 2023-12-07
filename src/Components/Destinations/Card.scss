@@ -11,7 +11,7 @@
     --greyText: hsl(0, 0%, 51%);
     --inputColor: hsl(330, 12%, 97%);
     --cardColor: hsl(300, 3%,94%);
-    /* Font and Topography */
+    /* Font and Typography */
     --biggestFontSize: 2.5rem;
     --h1FontSize: 1.6rem;
     --h2FontSize: 1.25rem;
@@ -22,17 +22,40 @@
     --borderRadius: 3rem;
 }
 
-
-
 .Card {
-   // margin: 2rem;
-    padding-top: 10rem;
+    padding-top: 7rem;
+    position: relative;
 }
 
-h2 {
-    font-size: var(--h1FontSize);
-    color: var(--primaryColor);
+.videoContainer {
+    position: relative;
+    height: 300px; 
+    overflow: hidden;
+
+
+ video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+}
+
+.textOverlay {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: rgba(255, 255, 255, 0.737);
+    z-index: 2;
+}
+
+.textOverlay p {
+    font-size: 6rem; 
+    font-weight: bolder;
     margin-bottom: 1rem;
 }
 
-/* Add any additional styling as needed for your DestinationCardDetails component */
+.textOverlay h3 {
+    font-size: 1.6rem; 
+}

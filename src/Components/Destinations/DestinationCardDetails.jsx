@@ -1,8 +1,10 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
-//import {data} from './CardData.jsx';
 import './Card.scss';
+
+//imported images
+import video1 from "../../Assets/jaipur.mp4";
 
 function DestinationCardDetails() {
   const { id } = useParams();
@@ -11,7 +13,13 @@ function DestinationCardDetails() {
     <div>
       <Navbar />
       <div className="Card">
-      <h2>Destination Details for ID: {id}</h2>
+        <div className="videoContainer">
+          <video src={video1} autoPlay loop muted></video>
+          <div className="textOverlay">
+            <p>Jaipur</p>
+            <h3>Rajasthan</h3>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -34,15 +34,18 @@
         }
 
         .searchField{
+            
             margin-top: 2rem;
             gap: 1rem;
             .inputField{
+                width: 500px;
                 background: var(--primaryColorLight);
                 padding: 1rem;
                 border-radius: var(--borderRadius);
                 gap: -5rem;
 
                 input{
+                    
                     background: transparent;
                     border: none;
                     outline: none;
@@ -73,7 +76,7 @@
             overflow-x: scroll; 
             white-space: nowrap;
             width: 100%;
-            padding-bottom: 1rem;
+            padding-bottom: .3rem;
 
         }    
     }
@@ -148,13 +151,18 @@
         }
 
         .rating{
-            padding: 8px 1rem;
-            border-radius: var(--borderRadius);
+            padding: 8px .5rem;
+            border-radius: 1rem;
             background: rgba(245, 245, 245, 0.37);
             border: 1.5px solid rgba(255, 255, 255, 0.241);
             font-size: var(--h3FontSize);
             font-weight: 600;
             color: var(--whiteColor);
+
+            .hashicon{
+                font-size: var(--h3FontSize);
+                cursor: pointer;
+             }
         }
     }
 }

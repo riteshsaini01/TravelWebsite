@@ -4,7 +4,7 @@ import "./Destination.scss";
 
 
 //Imported Icons
-
+import { HiHashtag } from "react-icons/hi";
 import { TiLocation } from "react-icons/ti";
 
 function DestinationCard({ destination }) {
@@ -31,7 +31,7 @@ function DestinationCard({ destination }) {
                   {destination.location}
                 </p>
               </div>
-              <span className="rating">{destination.rating}</span>
+              <span className="rating"><HiHashtag className="hashicon" />{destination.rating}</span>
             </div>
           </div>
         </div>
