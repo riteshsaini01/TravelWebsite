@@ -21,7 +21,29 @@ function DestinationCardDetails() {
           </div>
         </div>
       </div>
+
+
+      <div className="structure">
+
+        
+      <div className="MapAPI">
+       <h1> Map here </h1>
+       </div>
+
+
+      <div className="details">
+
+        <p>hello</p>
+        </div>
+      </div> 
+    
+
     </div>
+
+  
+ 
+
+
   );
 }
 
