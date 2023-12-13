@@ -28,7 +28,7 @@ const Portfolio = () => {
           </div>
 
           <div className="grid">
-          <div className="singlePortfolio flex">
+          <div className="singlePortfolio flex" data-aos='fade-up'>
               <div className="iconDiv">
                   <img src={icon1} alt='Icon image' />
               </div>

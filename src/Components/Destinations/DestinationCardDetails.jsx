@@ -1,5 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+import { GoogleMap, LoadScript } from '@react-google-maps/api';
 import Navbar from "../Navbar/Navbar";
 import './Card.scss';
 
@@ -39,7 +40,17 @@ function DestinationCardDetails() {
 
         
       <div className="MapAPI">
-       <h1> Map here </h1>
+              
+          <LoadScript
+            googleMapsApiKey="AIzaSyAOn2je-sO9OsvRAZSzj7U1bTwAvVrB-yY"
+          >
+            <GoogleMap
+              mapContainerStyle={{ height: "400px", width: "100%" }}
+              center={{ lat: 27.0238, lng: 74.2179 }} // Adjust with the coordinates of your desired location
+              zoom={12}
+            />
+          </LoadScript>
+
        </div>
 
 
