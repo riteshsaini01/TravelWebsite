@@ -7,6 +7,22 @@ import './Card.scss';
 //imported images
 import video1 from "../../Assets/jaipur.mp4";
 
+//imported icons
+import { IoIosWifi } from "react-icons/io";
+import { FaStar } from "react-icons/fa";
+import { GiMoneyStack } from "react-icons/gi";
+import { BsEmojiGrin } from "react-icons/bs";
+import { MdOutlineWindPower } from "react-icons/md";
+import { AiFillSafetyCertificate } from "react-icons/ai";
+import { FaRegLightbulb } from "react-icons/fa";
+import { GiNightSleep } from "react-icons/gi";
+import { BsPersonWorkspace } from "react-icons/bs";
+import { IoTimeOutline } from "react-icons/io5";
+import { GrRestroomWomen } from "react-icons/gr";
+import { TiWeatherPartlySunny } from "react-icons/ti";
+import { FaTruckMedical } from "react-icons/fa6";
+
+
 function DestinationCardDetails() {
   const { id } = useParams();
   const [activeTab, setActiveTab] = useState("details");
@@ -58,69 +74,69 @@ function DestinationCardDetails() {
             <div className="progressbar">
               <ul>
               <li className="detail1">
-              <h2>Ranking:</h2>
+              <h2><FaStar className="icon"/> Ranking:</h2>
          
           </li>
 
 
           <li className="detail2">
-            <h2>Cost for Nomad:</h2>
+            <h2><GiMoneyStack className="icon" /> Cost for Nomad:</h2>
          
           </li>
 
 
           <li>
-          <h2>WiFi:</h2>
+          <h2><IoIosWifi className="icon"/> WiFi:</h2>
          
           </li>
 
           <li>
-          <h2>Fun:</h2>
+          <h2><BsEmojiGrin className="icon"/> Fun:</h2>
          
           </li>
 
           <li>
-          <h2>Air Quality(AQI):</h2>
+          <h2><MdOutlineWindPower className="icon" /> Air Quality(AQI):</h2>
           
           </li>
 
           <li>
-          <h2>Safety:</h2>
+          <h2><AiFillSafetyCertificate className="icon"/> Safety:</h2>
         
           </li>
 
           <li>
-          <h2>Electricity:</h2>
+          <h2><FaRegLightbulb className="icon" /> Electricity:</h2>
          
           </li>
 
           <li>
-          <h2>NightLife:</h2>
+          <h2><GiNightSleep className="icon" /> NightLife:</h2>
          
           </li>
 
           <li>
-          <h2>Place for WFH:</h2>
+          <h2><BsPersonWorkspace className="icon"/> Place for WFH:</h2>
          
           </li>
 
           <li>
-          <h2>AVG Trip Time:</h2>
+          <h2><IoTimeOutline className="icon"/> AVG Trip Time:</h2>
          
           </li>
 
           <li>
-          <h2>Safe for Women:</h2>
+          <h2><GrRestroomWomen className="icon"/> Safe for Women:</h2>
          
           </li>
 
           <li>
-          <h2>Climate:</h2>
+          <h2><TiWeatherPartlySunny className="icon" /> Climate:</h2>
          
           </li>
 
           <li>
-          <h2>Medical:</h2>
+          <h2><FaTruckMedical className="icon"/> Medical:</h2>
           
           </li>
               
