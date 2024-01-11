@@ -1,13 +1,12 @@
-import React, { useState } from "react";
+// Import necessary dependencies and components
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
 import Navbar from "../Navbar/Navbar";
 import './Card.scss';
 
-//imported images
+// Import images and icons
 import video1 from "../../Assets/jaipur.mp4";
-
-//imported icons
 import { IoIosWifi } from "react-icons/io";
 import { FaStar } from "react-icons/fa";
 import { GiMoneyStack } from "react-icons/gi";
@@ -22,11 +21,51 @@ import { GrRestroomWomen } from "react-icons/gr";
 import { TiWeatherPartlySunny } from "react-icons/ti";
 import { FaTruckMedical } from "react-icons/fa6";
 
+// Define the Progressbar component
+function Progressbar({ value = 0 }) {
+  const [percent, setPercent] = useState(value);
 
+  useEffect(() => {
+    if (percent < 100) {
+      setTimeout(() => setPercent(newVal => newVal + 1), 200);
+    }
+  }, [percent]);
+
+  return (
+    <React.Fragment>
+      <div className="progressbar">
+        <div className="progressbarfill" style={{ width: `${percent}%` }}>
+          {percent} %
+        </div>
+      </div>
+    </React.Fragment>
+  );
+}
+
+// Define the DestinationCardDetails component
 function DestinationCardDetails() {
   const { id } = useParams();
   const [activeTab, setActiveTab] = useState("details");
+  const [rankingProgress, setRankingProgress] = useState(0);
+  const [nomadCostProgress, setNomadCostProgress] = useState(0);
 
+  useEffect(() => {
+    const rankingInterval = setInterval(() => {
+      setRankingProgress(val => val + 1);
+    }, 100);
+
+    const nomadCostInterval = setInterval(() => {
+      setNomadCostProgress(val => val + 1);
+    }, 150);
+
+    // Cleanup functions to clear intervals when the component is unmounted
+    return () => {
+      clearInterval(rankingInterval);
+      clearInterval(nomadCostInterval);
+    };
+  }, []);
+
+  // Render the component
   return (
     <div>
       <Navbar />
@@ -41,7 +80,6 @@ function DestinationCardDetails() {
       </div>
 
       <div className="structure">
-
         <div className="MapAPI">
           <LoadScript
             googleMapsApiKey="AIzaSyAOn2je-sO9OsvRAZSzj7U1bTwAvVrB-yY"
@@ -73,73 +111,69 @@ function DestinationCardDetails() {
           {activeTab === "details" && (
             <div className="progressbar">
               <ul>
-              <li className="detail1">
-              <h2><FaStar className="icon"/> Ranking:</h2>
-         
-          </li>
+                <li className="detail1">
+                  <h2><FaStar className="icon" /> Ranking:</h2>
+                  <Progressbar value={rankingProgress} />
+                </li>
 
+                <li className="detail2">
+                  <h2><GiMoneyStack className="icon" /> Cost for Nomad:</h2>
+                  <Progressbar value={nomadCostProgress} />
+                </li>
+                {/* ... (previous list items) */}
 
-          <li className="detail2">
-            <h2><GiMoneyStack className="icon" /> Cost for Nomad:</h2>
-         
-          </li>
+<li>
+  <h2><BsEmojiGrin className="icon" /> Fun:</h2>
+  {/* Add your content for Fun */}
+</li>
 
+<li>
+  <h2><MdOutlineWindPower className="icon" /> Air Quality(AQI):</h2>
+  {/* Add your content for Air Quality(AQI) */}
+</li>
 
-          <li>
-          <h2><IoIosWifi className="icon"/> WiFi:</h2>
-         
-          </li>
+<li>
+  <h2><AiFillSafetyCertificate className="icon" /> Safety:</h2>
+  {/* Add your content for Safety */}
+</li>
 
-          <li>
-          <h2><BsEmojiGrin className="icon"/> Fun:</h2>
-         
-          </li>
+<li>
+  <h2><FaRegLightbulb className="icon" /> Electricity:</h2>
+  {/* Add your content for Electricity */}
+</li>
 
-          <li>
-          <h2><MdOutlineWindPower className="icon" /> Air Quality(AQI):</h2>
-          
-          </li>
+<li>
+  <h2><GiNightSleep className="icon" /> NightLife:</h2>
+  {/* Add your content for NightLife */}
+</li>
 
-          <li>
-          <h2><AiFillSafetyCertificate className="icon"/> Safety:</h2>
-        
-          </li>
+<li>
+  <h2><BsPersonWorkspace className="icon" /> Place for WFH:</h2>
+  {/* Add your content for Place for WFH */}
+</li>
 
-          <li>
-          <h2><FaRegLightbulb className="icon" /> Electricity:</h2>
-         
-          </li>
+<li>
+  <h2><IoTimeOutline className="icon" /> AVG Trip Time:</h2>
+  {/* Add your content for AVG Trip Time */}
+</li>
 
-          <li>
-          <h2><GiNightSleep className="icon" /> NightLife:</h2>
-         
-          </li>
+<li>
+  <h2><GrRestroomWomen className="icon" /> Safe for Women:</h2>
+  {/* Add your content for Safe for Women */}
+</li>
 
-          <li>
-          <h2><BsPersonWorkspace className="icon"/> Place for WFH:</h2>
-         
-          </li>
+<li>
+  <h2><TiWeatherPartlySunny className="icon" /> Climate:</h2>
+  {/* Add your content for Climate */}
+</li>
 
-          <li>
-          <h2><IoTimeOutline className="icon"/> AVG Trip Time:</h2>
-         
-          </li>
+<li>
+  <h2><FaTruckMedical className="icon" /> Medical:</h2>
+  {/* Add your content for Medical */}
+</li>
 
-          <li>
-          <h2><GrRestroomWomen className="icon"/> Safe for Women:</h2>
-         
-          </li>
+{/* ... (additional list items) */}
 
-          <li>
-          <h2><TiWeatherPartlySunny className="icon" /> Climate:</h2>
-         
-          </li>
-
-          <li>
-          <h2><FaTruckMedical className="icon"/> Medical:</h2>
-          
-          </li>
-              
               </ul>
             </div>
           )}
@@ -154,7 +188,7 @@ function DestinationCardDetails() {
         </div>
       </div>
     </div>
-  );
+    );
 }
 
 export default DestinationCardDetails;
