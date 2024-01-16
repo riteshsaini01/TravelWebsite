@@ -23,7 +23,7 @@
 }
 
 .Card {
-    padding-top: 7.8rem;
+    padding-top: 7rem;
     position: relative;
 
     .videoContainer {
@@ -112,21 +112,20 @@
 }
 
 /* Progress Bar Container */
+/* Base Progress Bar Style */
 .progressbar {
     width: 100%;
     height: 30px;
     border-radius: 50px;
-  //  border: 1px solid #000;
     margin-bottom: 10px;
     text-align: center;
     background-color: #fff;
-}
-
-/* Progress Bar Fill */
-.progressbarfill {
+  }
+  
+  /* Progress Bar Fill */
+  .progressbarfill {
     height: 100%;
     border-radius: 50px;
-    background-color: var(--primaryColor); /* Use your desired color */
     transition: width 0.5s ease-out;
     color: #fff;
     display: flex;
@@ -134,10 +133,28 @@
     justify-content: center;
     font-weight: bold;
     text-align: center;
-}
+  }
+  
+  /* Conditional Colors based on Progress Percentage */
+  .progressbarfill {
+    background-color: var(--primaryColor); /* Default color, use your desired color */
+  }
+  
+  .progressbarfill.below30 {
+    background-color: red; /* Change to red if below 30% */
+  }
+  
+  .progressbarfill.between30and70 {
+    background-color: orange; /* Change to orange if between 30% and 70% */
+  }
+  
+  .progressbarfill.above70 {
+    background-color: green; /* Change to green if above 70% */
+  }
+  
 
 /* Optional: Add hover effect */
-.progressbar:hover .progressbarfill {
-    background-color: var(--primaryColorLight); /* Use your desired hover color */
-    color: #000;
-}
+//.progressbar:hover .progressbarfill {
+   // background-color: var(--primaryColorLight); /* Use your desired hover color */
+    //color: #000;
+//}

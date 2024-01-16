@@ -1,4 +1,3 @@
-// Import necessary dependencies and components
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
@@ -7,7 +6,6 @@ import './Card.scss';
 
 // Import images and icons
 import video1 from "../../Assets/jaipur.mp4";
-import { IoIosWifi } from "react-icons/io";
 import { FaStar } from "react-icons/fa";
 import { GiMoneyStack } from "react-icons/gi";
 import { BsEmojiGrin } from "react-icons/bs";
@@ -22,19 +20,30 @@ import { TiWeatherPartlySunny } from "react-icons/ti";
 import { FaTruckMedical } from "react-icons/fa6";
 
 // Define the Progressbar component
-function Progressbar({ value = 0 }) {
-  const [percent, setPercent] = useState(value);
+function Progressbar({ value }) {
+  const [percent, setPercent] = useState(0);
 
   useEffect(() => {
-    if (percent < 100) {
-      setTimeout(() => setPercent(newVal => newVal + 1), 200);
+    if (percent < value) {
+      const interval = setInterval(() => setPercent(prev => prev + 1), 200);
+      return () => clearInterval(interval);
     }
-  }, [percent]);
+  }, [percent, value]);
+
+  // Determine the color class based on progress value
+  let colorClass = "";
+  if (percent < 30) {
+    colorClass = "below30";
+  } else if (percent >= 30 && percent <= 70) {
+    colorClass = "between30and70";
+  } else {
+    colorClass = "above70";
+  }
 
   return (
     <React.Fragment>
-      <div className="progressbar">
-        <div className="progressbarfill" style={{ width: `${percent}%` }}>
+      <div className={`progressbar ${colorClass}`}>
+        <div className={`progressbarfill ${colorClass}`} style={{ width: `${percent}%` }}>
           {percent} %
         </div>
       </div>
@@ -48,20 +57,80 @@ function DestinationCardDetails() {
   const [activeTab, setActiveTab] = useState("details");
   const [rankingProgress, setRankingProgress] = useState(0);
   const [nomadCostProgress, setNomadCostProgress] = useState(0);
+  const [funProgress, setFunProgress] = useState(0);
+  const [aqiProgress, setAqiProgress] = useState(0);
+  const [safetyProgress, setSafetyProgress] = useState(0);
+  const [electricityProgress, setElectricityProgress] = useState(0);
+  const [nightLifeProgress, setNightLifeProgress] = useState(0);
+  const [wfhPlaceProgress, setWFHPlaceProgress] = useState(0);
+  const [avgTripTimeProgress, setAvgTripTimeProgress] = useState(0);
+  const [safeForWomenProgress, setSafeForWomenProgress] = useState(0);
+  const [climateProgress, setClimateProgress] = useState(0);
+  const [medicalProgress, setMedicalProgress] = useState(0);
 
   useEffect(() => {
-    const rankingInterval = setInterval(() => {
-      setRankingProgress(val => val + 1);
+    const RankingInterval = setInterval(() => {
+      setRankingProgress(val => (val < 30 ? val + 1 : 30));
+    }, 120);
+
+    const NomadInterval = setInterval(() => {
+      setNomadCostProgress(val => (val < 40 ? val + 1 : 40));
+    }, 120);
+
+    const funInterval = setInterval(() => {
+      setFunProgress(val => (val < 50 ? val + 1 : 50));
+    }, 120);
+
+    const aqiInterval = setInterval(() => {
+      setAqiProgress(val => (val < 60 ? val + 1 : 60));
+    }, 180);
+
+    const safetyInterval = setInterval(() => {
+      setSafetyProgress(val => (val < 70 ? val + 1 : 70));
+    }, 90);
+
+    const electricityInterval = setInterval(() => {
+      setElectricityProgress(val => (val < 80 ? val + 1 : 80));
+    }, 130);
+
+    const nightLifeInterval = setInterval(() => {
+      setNightLifeProgress(val => (val < 90 ? val + 1 : 90));
+    }, 150);
+
+    const wfhPlaceInterval = setInterval(() => {
+      setWFHPlaceProgress(val => (val < 20 ? val + 1 : 20));
     }, 100);
 
-    const nomadCostInterval = setInterval(() => {
-      setNomadCostProgress(val => val + 1);
-    }, 150);
+    const avgTripTimeInterval = setInterval(() => {
+      setAvgTripTimeProgress(val => (val < 30 ? val + 1 : 30));
+    }, 120);
+
+    const safeForWomenInterval = setInterval(() => {
+      setSafeForWomenProgress(val => (val < 40 ? val + 1 : 40));
+    }, 110);
+
+    const climateInterval = setInterval(() => {
+      setClimateProgress(val => (val < 50 ? val + 1 : 50));
+    }, 140);
+
+    const medicalInterval = setInterval(() => {
+      setMedicalProgress(val => (val < 60 ? val + 1 : 60));
+    }, 160);
 
     // Cleanup functions to clear intervals when the component is unmounted
     return () => {
-      clearInterval(rankingInterval);
-      clearInterval(nomadCostInterval);
+      clearInterval(RankingInterval);
+      clearInterval(NomadInterval);
+      clearInterval(funInterval);
+      clearInterval(aqiInterval);
+      clearInterval(safetyInterval);
+      clearInterval(electricityInterval);
+      clearInterval(nightLifeInterval);
+      clearInterval(wfhPlaceInterval);
+      clearInterval(avgTripTimeInterval);
+      clearInterval(safeForWomenInterval);
+      clearInterval(climateInterval);
+      clearInterval(medicalInterval);
     };
   }, []);
 
@@ -120,60 +189,56 @@ function DestinationCardDetails() {
                   <h2><GiMoneyStack className="icon" /> Cost for Nomad:</h2>
                   <Progressbar value={nomadCostProgress} />
                 </li>
-                {/* ... (previous list items) */}
 
-<li>
-  <h2><BsEmojiGrin className="icon" /> Fun:</h2>
-  {/* Add your content for Fun */}
-</li>
+                <li>
+                  <h2><BsEmojiGrin className="icon" /> Fun:</h2>
+                  <Progressbar value={funProgress} />
+                </li>
 
-<li>
-  <h2><MdOutlineWindPower className="icon" /> Air Quality(AQI):</h2>
-  {/* Add your content for Air Quality(AQI) */}
-</li>
+                <li>
+                  <h2><MdOutlineWindPower className="icon" /> Air Quality(AQI):</h2>
+                  <Progressbar value={aqiProgress} />
+                </li>
 
-<li>
-  <h2><AiFillSafetyCertificate className="icon" /> Safety:</h2>
-  {/* Add your content for Safety */}
-</li>
+                <li>
+                  <h2><AiFillSafetyCertificate className="icon" /> Safety:</h2>
+                  <Progressbar value={safetyProgress} />
+                </li>
 
-<li>
-  <h2><FaRegLightbulb className="icon" /> Electricity:</h2>
-  {/* Add your content for Electricity */}
-</li>
+                <li>
+                  <h2><FaRegLightbulb className="icon" /> Electricity:</h2>
+                  <Progressbar value={electricityProgress} />
+                </li>
 
-<li>
-  <h2><GiNightSleep className="icon" /> NightLife:</h2>
-  {/* Add your content for NightLife */}
-</li>
+                <li>
+                  <h2><GiNightSleep className="icon" /> NightLife:</h2>
+                  <Progressbar value={nightLifeProgress} />
+                </li>
 
-<li>
-  <h2><BsPersonWorkspace className="icon" /> Place for WFH:</h2>
-  {/* Add your content for Place for WFH */}
-</li>
+                <li>
+                  <h2><BsPersonWorkspace className="icon" /> Place for WFH:</h2>
+                  <Progressbar value={wfhPlaceProgress} />
+                </li>
 
-<li>
-  <h2><IoTimeOutline className="icon" /> AVG Trip Time:</h2>
-  {/* Add your content for AVG Trip Time */}
-</li>
+                <li>
+                  <h2><IoTimeOutline className="icon" /> AVG Trip Time:</h2>
+                  <Progressbar value={avgTripTimeProgress} />
+                </li>
 
-<li>
-  <h2><GrRestroomWomen className="icon" /> Safe for Women:</h2>
-  {/* Add your content for Safe for Women */}
-</li>
+                <li>
+                  <h2><GrRestroomWomen className="icon" /> Safe for Women:</h2>
+                  <Progressbar value={safeForWomenProgress} />
+                </li>
 
-<li>
-  <h2><TiWeatherPartlySunny className="icon" /> Climate:</h2>
-  {/* Add your content for Climate */}
-</li>
+                <li>
+                  <h2><TiWeatherPartlySunny className="icon" /> Climate:</h2>
+                  <Progressbar value={climateProgress} />
+                </li>
 
-<li>
-  <h2><FaTruckMedical className="icon" /> Medical:</h2>
-  {/* Add your content for Medical */}
-</li>
-
-{/* ... (additional list items) */}
-
+                <li>
+                  <h2><FaTruckMedical className="icon" /> Medical:</h2>
+                  <Progressbar value={medicalProgress} />
+                </li>
               </ul>
             </div>
           )}
@@ -188,7 +253,7 @@ function DestinationCardDetails() {
         </div>
       </div>
     </div>
-    );
+  );
 }
 
 export default DestinationCardDetails;
