@@ -151,6 +151,61 @@
   .progressbarfill.above70 {
     background-color: green; /* Change to green if above 70% */
   }
+
+
+
+  .places {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .place-item {
+    width: calc(50% - 20px);
+    margin: 10px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .place-item:hover {
+    transform: scale(1.05);
+  }
+  
+  .place-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .place-item:hover img {
+    transform: scale(1.1);
+  }
+  
+  .place-description {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 12px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .place-item:hover .place-description {
+    opacity: 1;
+  }
+  
+  
   
 
 /* Optional: Add hover effect */

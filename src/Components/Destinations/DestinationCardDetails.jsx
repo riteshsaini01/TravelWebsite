@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
 import Navbar from "../Navbar/Navbar";
+import Footer from "../Footer/Footer";
 import './Card.scss';
 
 // Import images and icons
@@ -18,6 +19,36 @@ import { IoTimeOutline } from "react-icons/io5";
 import { GrRestroomWomen } from "react-icons/gr";
 import { TiWeatherPartlySunny } from "react-icons/ti";
 import { FaTruckMedical } from "react-icons/fa6";
+
+//Importing images of popular places
+import J1 from "../../Assets/PlacesGallery/J1.jpg";
+import J2 from "../../Assets/PlacesGallery/J2.jpg";
+import J3 from "../../Assets/PlacesGallery/J3.jpg";
+import J4 from "../../Assets/PlacesGallery/J4.jpg";
+
+const photos = [
+  {
+    id: 1,
+    src: J1,
+    details: "Hawa Mahal, 'the Palace of the Winds', stands in Jaipur, Rajasthan. Built in 1799, it's a five-story architectural marvel with 953 intricately designed windows. Maharaja Sawai Pratap Singh's creation fuses Rajput and Mughal styles, serving as an iconic symbol of Jaipur's rich cultural heritage and attracting visitors worldwide.",
+  },
+  {
+    id: 2,
+    src: J2,
+    details: "Jal Mahal, nestled in Man Sagar Lake, Jaipur, is a stunning architectural gem. Built in the 18th century, the palace partially submerged in water exhibits a unique blend of Rajput and Mughal styles. Renowned for its picturesque setting, Jal Mahal reflects the grandeur of Rajasthan's royal history, captivating visitors with its beauty.",
+  },
+  {
+    id: 3,
+    src: J3,
+    details: "Albert Hall Museum, located in Jaipur, Rajasthan, is a captivating blend of Indo-Saracenic architecture. Built in 1876 to commemorate Albert Edward's visit, it houses an extensive collection of artifacts, including sculptures, paintings, and decorative arts. A symbol of cultural heritage, the museum showcases Rajasthan's rich history and artistic traditions.",
+  },
+  {
+    id: 4,
+    src: J4,
+    details: "Galta Ji Temple, situated in Jaipur, is an ancient Hindu pilgrimage site surrounded by the Aravalli hills. Also known as the Monkey Temple, it features a series of holy water tanks and pavilions. The temple complex is home to a large population of monkeys, adding a unique and lively atmosphere to the spiritual ambiance.",
+  },
+  // Add more photos as needed
+];
 
 // Define the Progressbar component
 function Progressbar({ value }) {
@@ -243,17 +274,28 @@ function DestinationCardDetails() {
             </div>
           )}
 
-          {activeTab === "places" && (
-            <div className="places">
-              {/* Places content here */}
-              <h2>Places content goes here</h2>
-              {/* Add your content for the "Places" tab */}
-            </div>
-          )}
+        {activeTab === "places" && (
+          <div className="places">
+            {photos.map((photo, index) => (
+              <div key={photo.id} className={`place-item ${index % 2 === 0 ? "left" : "right"}`}>
+                <img src={photo.src} alt={`Photo ${photo.id}`} />
+                <div className="place-description">
+                  <h3>{photo.details}</h3>
+                  {/* Add other description content as needed */}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
         </div>
       </div>
+     
     </div>
+    
   );
+ 
 }
 
 export default DestinationCardDetails;
+
+
