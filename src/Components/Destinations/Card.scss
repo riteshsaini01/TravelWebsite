@@ -162,6 +162,7 @@
   
   .place-item {
     width: calc(50% - 20px);
+    height: 500px; /* Set a fixed height for the container */
     margin: 10px;
     position: relative;
     overflow: hidden;
@@ -176,7 +177,7 @@
   
   .place-item img {
     width: 100%;
-    height: 100%;
+    height: 110%; /* Increase the height a little */
     object-fit: cover;
     border-radius: 12px;
     transition: transform 0.3s ease-in-out;
@@ -201,9 +202,12 @@
     transition: opacity 0.3s ease-in-out;
   }
   
-  .place-item:hover .place-description {
+  .place-item:hover .place-description,
+  .place-item:hover img {
     opacity: 1;
   }
+  
+  
   
   
   
